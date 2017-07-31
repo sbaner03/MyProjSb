@@ -49,7 +49,16 @@ class SearchBooks extends Component {
         <div>
 
           <p> Existing Books </p>
+          <ol>
+            {this.state.listedshowingShelves.map(shelf => (<ul key={this.state.listedshowingShelves.indexOf(shelf)}>
+              <Shelf shelf = {shelf} shelfbook = {this.props.listedbooks.filter((x)=>(x.shelf===shelf))} updateShelf = {this.props.updateShelf}/>
+            </ul>))}
+          </ol>
 
+          /// Please read the inline comments in the file SearchBooks.js lines 58-61
+          /// The this second shelf component should behave identical to the shelf component above
+          /// However, if i update the shelf of a book in this component, it is not automatically removed from the given shelf
+          /// I would have expected the book to move between the showingShelves at the very least
           <p> Search Results </p>
           <ol>
             {this.state.showingShelves.map(shelf => (<ul key={this.state.showingShelves.indexOf(shelf)}>
@@ -64,11 +73,3 @@ class SearchBooks extends Component {
 }
 
 export default SearchBooks;
-
-
-/*  <ol>
-    {this.state.listedshowingShelves.map(shelf => (<ul key={this.state.listedshowingShelves.indexOf(shelf)}>
-      <Shelf shelf = {shelf} shelfbook = {this.props.listedbooks.filter((x)=>(x.shelf===shelf))} updateShelf = {this.props.updateShelf}/>
-    </ul>))}
-  </ol>
-*/
