@@ -10,25 +10,24 @@ class ShowShelves extends Component {
     books: PropTypes.array.isRequired,
     updateShelf: PropTypes.func.isRequired
   }
-  
+
   render() {
     const { books} = this.props
     let shelves = ["wantToRead", "currentlyReading", "read","none"]
 
     return (
-      
+
       <div className='show-shelves'>
-        <p> My Reads </p>
+        <p> My Test </p>
         <ol>
-          {shelves.map(shelf => (<ul key={shelves.indexOf(shelf)}> 
+          {shelves.map(shelf => (<ul key={shelves.indexOf(shelf)}>
             <Shelf shelf = {shelf} shelfbook = {this.props.books.filter((x)=>(x.shelf===shelf))} updateShelf = {this.props.updateShelf}/>
           </ul>))}
         </ol>
         <Link className='open-search' to='/search'>Search</Link>
       </div>
-    )  
+    )
   }
 }
 
 export default ShowShelves;
-

@@ -14,7 +14,7 @@ class Book extends Component{
     this.props.updateShelf(this.props.book,e.target.value)
     this.setState({book_state: e.target.value})
     }
- componentWillMount() {
+ componentDidMount() {
       this.setState({book_state: this.props.book.shelf})
     }
 
