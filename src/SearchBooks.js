@@ -27,11 +27,6 @@ class SearchBooks extends Component {
 }
   render() {
     let query = this.state.query
-    console.log(this.state.books)
-    for (let book of this.state.books){
-      console.log(book.title,book.shelf)
-    }
-
     return (
 
 
@@ -55,10 +50,7 @@ class SearchBooks extends Component {
             </ul>))}
           </ol>
 
-          /// Please read the inline comments in the file SearchBooks.js lines 58-61
-          /// The this second shelf component should behave identical to the shelf component above
-          /// However, if i update the shelf of a book in this component, it is not automatically removed from the given shelf
-          /// I would have expected the book to move between the showingShelves at the very least
+
           <p> Search Results </p>
           <ol>
             {this.state.showingShelves.map(shelf => (<ul key={this.state.showingShelves.indexOf(shelf)}>

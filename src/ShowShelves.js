@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Shelf from './Shelf'
+import * as BooksAPI from './BooksAPI'
 
 
 
@@ -10,6 +11,7 @@ class ShowShelves extends Component {
     books: PropTypes.array.isRequired,
     updateShelf: PropTypes.func.isRequired
   }
+
 
   render() {
     const { books} = this.props
