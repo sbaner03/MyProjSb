@@ -30,18 +30,18 @@ class SearchBooks extends Component {
     return (
 
 
-      <div className='list-books'>
-        <Link className='go-to-homepage' to='/'>Close</Link>
-        <div className='list-books-top'>
+      <div className='search-books'>
+        <Link className='close-search' to='/'>Close</Link>
+        <div className='search-books-input-wrapper'>
           <input
-            className='search-books'
+            className='search-books-bar'
             type='text'
             placeholder='Search Books'
             value={query}
             onChange={(event) => this.updateQuery(event.target.value)}
           />
         </div>
-        <div>
+        <div className = 'search-books-results'>
 
           <p> Existing Books </p>
           <ol>

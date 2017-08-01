@@ -31,9 +31,9 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className = "app">
         <Route exact path="/" render={({history}) => (<ShowShelves books = {this.state.books} updateShelf = {this.updateShelf}/>)}/>
-        <Route path="/search" render={() => (<SearchBooks listedbooks = {this.state.books} updateShelf = {this.updateShelf}/>)}/>
+        <Route path="/search" className = "search-books" render={() => (<SearchBooks listedbooks = {this.state.books} updateShelf = {this.updateShelf}/>)}/>
       </div>
     )
   }

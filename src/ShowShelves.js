@@ -19,8 +19,8 @@ class ShowShelves extends Component {
 
     return (
 
-      <div className='show-shelves'>
-        <p> My Test </p>
+      <div className='list-books'>
+        <p> My Reads </p>
         <ol>
           {shelves.map(shelf => (<ul key={shelves.indexOf(shelf)}>
             <Shelf shelf = {shelf} shelfbook = {this.props.books.filter((x)=>(x.shelf===shelf))} updateShelf = {this.props.updateShelf}/>

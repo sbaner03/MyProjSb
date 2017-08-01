@@ -21,7 +21,7 @@ class Book extends Component{
   render (){
 
     return (
-    	<div>
+    	<div className = "book">
       		<p> {this.props.book.title} </p>
       		<select value={this.state.book_state} onChange={this.handleChange}>
       			<option value="wantToRead">wantToRead</option>
