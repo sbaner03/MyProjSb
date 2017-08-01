@@ -2,38 +2,23 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 
 class Book extends Component{
-  static propTypes={
-    book: PropTypes.object.isRequired,
-    updateShelf: PropTypes.func.isRequired
+static propTypes={
+  book: PropTypes.object.isRequired,
+  updateShelf: PropTypes.func.isRequired
+}
+state = {
+	book_state: ''
+}
+
+handleChange = (e)=>{
+  this.props.updateShelf(this.props.book,e.target.value)
+  this.setState({book_state: e.target.value})
   }
-  state = {
-  	book_state: ''
+componentDidMount() {
+    this.setState({book_state: this.props.book.shelf})
   }
-
- handleChange = (e)=>{
-    this.props.updateShelf(this.props.book,e.target.value)
-    this.setState({book_state: e.target.value})
-    }
- componentDidMount() {
-      this.setState({book_state: this.props.book.shelf})
-    }
-  setupdisplayshelf() {
-    let displayshelves = ["Want to Read", "Currently Reading", "Read","Not Read"]
-    let shelves = ["wantToRead", "currentlyReading", "read","none"]
-    let disp = []
-    for (let shelf of shelves){
-      disp[shelf] = displayshelves[shelves.indexOf(shelf)]
-    }
-    console.log(disp)
-   }
-
-
-
   render (){
-
-
-
-    return (
+  return (
     	<div className = "book">
         <div className="book-top">
 
@@ -48,12 +33,7 @@ class Book extends Component{
             </div>
         </div>
         <div className="book-title">{this.props.book.title}</div>
-        <div className="book-authors">
-          <ol>
-            {typeof this.props.book.authors === 'undefined' ? <li key = {this.props.book.id+'_none'}> 'no author' </li>:'2'}
-
-          </ol>
-        </div>
+        {typeof this.props.book.authors === 'undefined' ? <div className="book-authors" key = {this.props.book.id+'_none'}> 'Udacity API likes messing with me!!!' </div>:<div className="book-authors" key = {this.props.book.id+'_author'}> {this.props.book.authors.join(', ')} </div>}
 
       </div>
     )

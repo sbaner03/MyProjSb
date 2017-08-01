@@ -32,30 +32,30 @@ class SearchBooks extends Component {
 
 
       <div className='search-books'>
-        <Link className='close-search' to='/'>Close</Link>
-        <div className='search-books-input-wrapper'>
+
+        <div className='search-books-bar'>
+        <Link className='close-search' to='/'><a> Close </a> </Link>
           <input
-            className='search-books-bar'
+            className='search-books-input-wrapper'
             type='text'
-            placeholder='Search Books'
+            placeholder='Search by Title or Author'
             value={query}
             onChange={(event) => this.updateQuery(event.target.value)}
           />
         </div>
         <div className = 'search-books-results'>
 
-          <p> Existing Books </p>
-          <ol>
-            {this.state.listedshowingShelves.map(shelf => (<ul key={this.state.listedshowingShelves.indexOf(shelf)}>
-              <Shelf shelf = {shelf} shelfbook = {this.props.listedbooks.filter((x)=>(x.shelf===shelf))} updateShelf = {this.props.updateShelf} displayShelf = {this.props.displayShelf}/>
-            </ul>))}
-          </ol>
-
-
-          <p> Search Results </p>
+          <h1> Search Results </h1>
           <ol>
             {this.state.showingShelves.map(shelf => (<ul key={this.state.showingShelves.indexOf(shelf)}>
               <Shelf shelf = {shelf} shelfbook = {this.state.books.filter((x)=>(x.shelf===shelf))} updateShelf = {this.props.updateShelf} displayShelf = {this.props.displayShelf}/>
+            </ul>))}
+          </ol>
+
+          <h1> Existing Books </h1>
+          <ol>
+            {this.state.listedshowingShelves.map(shelf => (<ul key={this.state.listedshowingShelves.indexOf(shelf)}>
+              <Shelf shelf = {shelf} shelfbook = {this.props.listedbooks.filter((x)=>(x.shelf===shelf))} updateShelf = {this.props.updateShelf} displayShelf = {this.props.displayShelf}/>
             </ul>))}
           </ol>
 
