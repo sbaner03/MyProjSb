@@ -26,6 +26,16 @@ class App extends Component {
     }
     )
   }
+  getdisplayshelf = (shx) =>{
+    let shelves = ["wantToRead", "currentlyReading", "read","none"]
+    let displayshelves = ['Want to Read','Currenty Reading','Read','Not Read']
+    let disp = {}
+    for (let shelf of shelves){
+    	disp[shelf] = displayshelves[shelves.indexOf(shelf)]
+    }
+    disp[shx]
+  }
+
 
 
 

@@ -39,7 +39,7 @@ body, .app {
 
 .bookshelf-title {
   border-bottom: 1px solid #dedede;
-  color: red;
+  color: blue;
 }
 .bookshelf-books {
   text-align: center;

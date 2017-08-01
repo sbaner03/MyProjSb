@@ -16,6 +16,7 @@ class ShowShelves extends Component {
   render() {
     const { books} = this.props
     let shelves = ["wantToRead", "currentlyReading", "read","none"]
+    let displayshelves = ["Want to Read", "Currently Reading", "Read","Not Read"]
 
     return (
 
