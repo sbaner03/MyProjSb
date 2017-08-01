@@ -26,14 +26,14 @@ class App extends Component {
     }
     )
   }
-  getdisplayshelf = (shx) =>{
+  displayShelf = (shx) =>{
     let shelves = ["wantToRead", "currentlyReading", "read","none"]
     let displayshelves = ['Want to Read','Currenty Reading','Read','Not Read']
     let disp = {}
     for (let shelf of shelves){
     	disp[shelf] = displayshelves[shelves.indexOf(shelf)]
     }
-    disp[shx]
+    return disp[shx]
   }
 
 
@@ -42,8 +42,8 @@ class App extends Component {
   render() {
     return (
       <div className = "app">
-        <Route exact path="/" render={({history}) => (<ShowShelves books = {this.state.books} updateShelf = {this.updateShelf}/>)}/>
-        <Route path="/search" className = "search-books" render={() => (<SearchBooks listedbooks = {this.state.books} updateShelf = {this.updateShelf}/>)}/>
+        <Route exact path="/" render={({history}) => (<ShowShelves books = {this.state.books} updateShelf = {this.updateShelf} displayShelf = {this.displayShelf}/>)}/>
+        <Route path="/search" className = "search-books" render={() => (<SearchBooks listedbooks = {this.state.books} updateShelf = {this.updateShelf} displayShelf = {this.displayShelf}/>)}/>
       </div>
     )
   }

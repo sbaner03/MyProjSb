@@ -9,14 +9,15 @@ import * as BooksAPI from './BooksAPI'
 class ShowShelves extends Component {
   static propTypes={
     books: PropTypes.array.isRequired,
-    updateShelf: PropTypes.func.isRequired
+    updateShelf: PropTypes.func.isRequired,
+    displayShelf: PropTypes.func.isRequired
   }
 
 
   render() {
     const { books} = this.props
     let shelves = ["wantToRead", "currentlyReading", "read","none"]
-    let displayshelves = ["Want to Read", "Currently Reading", "Read","Not Read"]
+
 
     return (
 
@@ -24,7 +25,7 @@ class ShowShelves extends Component {
         <p> My Reads </p>
         <ol>
           {shelves.map(shelf => (<ul key={shelves.indexOf(shelf)}>
-            <Shelf shelf = {shelf} shelfbook = {this.props.books.filter((x)=>(x.shelf===shelf))} updateShelf = {this.props.updateShelf}/>
+            <Shelf shelf = {shelf} shelfbook = {this.props.books.filter((x)=>(x.shelf===shelf))} updateShelf = {this.props.updateShelf} displayShelf = {this.props.displayShelf}/>
           </ul>))}
         </ol>
         <Link className='open-search' to='/search'>Search</Link>
