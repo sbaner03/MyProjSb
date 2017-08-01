@@ -22,7 +22,7 @@ class ShowShelves extends Component {
     return (
 
       <div className='list-books'>
-        <h1> My Reads </h1>
+        <h1> My Books </h1>
         <ol>
           {shelves.map(shelf => (<ul key={shelves.indexOf(shelf)}>
             <Shelf shelf = {shelf} shelfbook = {this.props.books.filter((x)=>(x.shelf===shelf))} updateShelf = {this.props.updateShelf} displayShelf = {this.props.displayShelf}/>

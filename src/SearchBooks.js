@@ -26,14 +26,26 @@ class SearchBooks extends Component {
     if (query) {
       BooksAPI.search(query,20).then((books)=>{
         let existingbooks = []
-  ///     this is done to because the search() is restricted to 20
-  ///     there could be a case where an existing book (result of getAll()) might not show up in the search() results
-  ///     this however causes the duplication of the same book in different shelves because the search and getall queries
-  ///     might be out of sync. In the real world, the api would be fixed and synchronized
-  ///     and the regex hack wouldnt be required
+  ///     Fix for a situaton since search() is restricted to 20 books and
+  ///     there could be an existing book (result of getAll() -> listedbooks passed through properties)
+  ///     might NOT show up in the search() results.
+  ///     Also there are cases where the same book has different shelves when called through the getAll() and search() queries.
+  ///     To fix this I have done the following:
+  ///     - created a new array called qbooks which ammends books (result of search()) and assigns the
+  ///       same properties to a book that is in listedbooks
+  ///     - unique entries of concat of qbooks and existingbooks 
         const match = new RegExp(escapeRegExp(query), 'i')
         existingbooks = this.props.listedbooks.filter(bk=>(bk.shelf!='none' && (match.test(bk.author)||(match.test(bk.title)))))
-        this.setState({books: [...new Set(books.concat(existingbooks))]})
+        let existingbooksid = existingbooks.map(bk=>(bk.id))
+        let qbooks = books.map(function(x){if (existingbooksid.indexOf(x.id)>-1)
+                                    {
+                                  		return existingbooksid[existingbooksid.indexOf(x.id)];
+                                  	}else{
+                                  		return x;
+                                  	}
+                                  })
+
+        this.setState({books: [...new Set(qbooks.concat(existingbooks))]})
       })
     }
 }
