@@ -28,7 +28,7 @@ class ShowShelves extends Component {
             <Shelf shelf = {shelf} shelfbook = {this.props.books.filter((x)=>(x.shelf===shelf))} updateShelf = {this.props.updateShelf} displayShelf = {this.props.displayShelf}/>
           </ul>))}
         </ol>
-        <Link className='open-search' to='/search'><a> Search </a> </Link>
+        <Link className='open-search' to='/search'><a key = {'search_page_id'}> Search </a> </Link>
       </div>
     )
   }
