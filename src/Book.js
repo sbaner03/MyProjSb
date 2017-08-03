@@ -23,7 +23,6 @@ componentDidMount() {
         <div className="book-top">
 
           <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.book.imageLinks.thumbnail})`}}></div>
-          {console.log(this.props.book.imageLinks.thumbnail)}
             <div className="book-shelf-changer">
           		<select value={this.state.book_state} onChange={this.handleChange}>
           			<option value="wantToRead">wantToRead</option>

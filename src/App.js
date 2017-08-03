@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import { Route } from 'react-router-dom'
-import { Link } from 'react-router-dom'
 import SearchBooks from './SearchBooks'
 import ShowShelves from './ShowShelves'
 
@@ -42,7 +41,7 @@ class App extends Component {
   render() {
     return (
       <div className = "app">
-        <Route exact path="/" render={({history}) => (<ShowShelves books = {this.state.books} updateShelf = {this.updateShelf} displayShelf = {this.displayShelf}/>)}/>
+        <Route exact path="/" className = "show-books"render={({history}) => (<ShowShelves books = {this.state.books} updateShelf = {this.updateShelf} displayShelf = {this.displayShelf}/>)}/>
         <Route path="/search" className = "search-books" render={() => (<SearchBooks listedbooks = {this.state.books} updateShelf = {this.updateShelf} displayShelf = {this.displayShelf}/>)}/>
       </div>
     )

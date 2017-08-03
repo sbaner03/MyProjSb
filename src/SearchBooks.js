@@ -22,7 +22,7 @@ class SearchBooks extends Component {
 
 
   updateQuery = (query) => {
-    this.setState({ query: query.trim()})
+    this.setState({ query})
     if (query) {
       BooksAPI.search(query,20).then((books)=>{
         let existingbooks = []
@@ -33,7 +33,7 @@ class SearchBooks extends Component {
   ///     To fix this I have done the following:
   ///     - created a new array called qbooks which ammends books (result of search()) and assigns the
   ///       same properties to a book that is in listedbooks
-  ///     - unique entries of concat of qbooks and existingbooks 
+  ///     - unique entries of concat of qbooks and existingbooks
         const match = new RegExp(escapeRegExp(query), 'i')
         existingbooks = this.props.listedbooks.filter(bk=>(bk.shelf!='none' && (match.test(bk.author)||(match.test(bk.title)))))
         let existingbooksid = existingbooks.map(bk=>(bk.id))
@@ -70,17 +70,11 @@ class SearchBooks extends Component {
 
           <h1> Search Results </h1>
           <ol>
-            {this.state.showingShelves.map(shelf => (<ul key={this.state.showingShelves.indexOf(shelf)+'search'}>
+            {this.state.showingShelves.map(shelf => (<ol key={this.state.showingShelves.indexOf(shelf)+'search'}>
               <Shelf shelf = {shelf} shelfbook = {this.state.books.filter((x)=>(x.shelf===shelf))} updateShelf = {this.props.updateShelf} displayShelf = {this.props.displayShelf}/>
-            </ul>))}
+            </ol>))}
           </ol>
 
-          <h1> All Existing Books <i> only For Testing </i> </h1>
-          <ol>
-            {this.state.listedshowingShelves.map(shelf => (<ul key={this.state.listedshowingShelves.indexOf(shelf)+'show'}>
-              <Shelf shelf = {shelf} shelfbook = {this.props.listedbooks.filter((x)=>(x.shelf===shelf))} updateShelf = {this.props.updateShelf} displayShelf = {this.props.displayShelf}/>
-            </ul>))}
-          </ol>
 
         </div>
       </div>

@@ -24,9 +24,9 @@ class ShowShelves extends Component {
       <div className='list-books'>
         <h1> My Books </h1>
         <ol>
-          {shelves.map(shelf => (<ul key={shelves.indexOf(shelf)}>
+          {shelves.map(shelf => (<ol key={shelves.indexOf(shelf)}>
             <Shelf shelf = {shelf} shelfbook = {this.props.books.filter((x)=>(x.shelf===shelf))} updateShelf = {this.props.updateShelf} displayShelf = {this.props.displayShelf}/>
-          </ul>))}
+          </ol>))}
         </ol>
         <Link className='open-search' to='/search'><a key = {'search_page_id'}> Search </a> </Link>
       </div>
